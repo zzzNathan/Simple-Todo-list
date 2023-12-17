@@ -1,9 +1,8 @@
 # To-do list
 # ----------
 import datetime, sys
-TASKS_FILE = r'Your_file_here.txt'
+TASKS_FILE = r'Your_File_Here.txt'
 
-# Adds task to file
 def AddTask():
   # Get task and deadline
   label    = input('What is this task called?')
@@ -28,10 +27,33 @@ def PrintTask():
   # Close the file
   file.close()
 
+# Deletes specified task
+def DeleteTask():
+  # Open file
+  file  = open(TASKS_FILE,'r')
+
+  # Get unwanted task
+  label = input('What is the name of the task you have completed?')
+  
+  new = ''
+  # Remove all occurences of this label
+  for line in list(file):
+
+    # Detects the unwanted task
+    if label in line[ 4: ]:continue
+
+    # Otherwise keep this task
+    new = f'{new}{line}'
+
+  # Change file
+  file = open(TASKS_FILE,'w')
+  file.write(new)
+  
+  # Close the file
+  file.close()
+
 # Prints current date and time
 print( str(datetime.datetime.now())[:-10] )
-
-# Prints a nice heading
 print(
 '''
 #/*******************************************\ \n
@@ -41,14 +63,15 @@ print(
 
 mode = None
 while mode != 'q':
-
-  # Get mode of use from user
   print('\n\nYou may press \'q\' to quit')
-  mode = input('Type \'v\' to view tasks and \'w\' to enter a new task')
+  mode = input('Type \'v\' to view tasks, \'w\' to add a task and \'d\' to delete a task')
 
   match mode:
     # Reads current tasks from file
-    case 'v':PrintTasks()
+    case 'v':PrintTask()
+
+    # Deletes specified task
+    case 'd':DeleteTask()
       
     # Adds task to file
     case 'w':AddTask()
