@@ -3,6 +3,7 @@
 import datetime, sys
 TASKS_FILE = r'Your_file_here.txt'
 
+# Adds task to file
 def AddTask():
   # Get task and deadline
   label    = input('What is this task called?')
@@ -11,6 +12,18 @@ def AddTask():
   # Add task to the file
   file = open(TASKS_FILE,'a')
   file.write(f'\n  - {label} | Due: {deadline}')
+
+  # Close the file
+  file.close()
+
+# Prints all tasks to the screen
+def PrintTask():
+  # Open file
+  file = open(TASKS_FILE,'r')
+
+  # Print contents of file
+  print('------------------------------------\n')
+  print( file.read() )
 
   # Close the file
   file.close()
@@ -35,11 +48,7 @@ while mode != 'q':
 
   match mode:
     # Reads current tasks from file
-    case 'v':
-      file = open(TASKS_FILE,'r')
-      print('------------------------------------\n')
-      print( file.read() )
-      file.close()
+    case 'v':PrintTasks()
       
     # Adds task to file
     case 'w':AddTask()
