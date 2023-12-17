@@ -1,7 +1,7 @@
 # To-do list
 # ----------
 import datetime, sys
-TASKS_FILE = r'C:\Users\patyt\Task.txt'
+TASKS_FILE = r'Your_file_here.txt'
 
 def AddTask():
   # Get task and deadline
