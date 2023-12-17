@@ -17,6 +17,8 @@ def AddTask():
 
 # Prints current date and time
 print( str(datetime.datetime.now())[:-10] )
+
+# Prints a nice heading
 print(
 '''
 #/*******************************************\ \n
@@ -26,6 +28,8 @@ print(
 
 mode = None
 while mode != 'q':
+
+  # Get mode of use from user
   print('\n\nYou may press \'q\' to quit')
   mode = input('Type \'v\' to view tasks and \'w\' to enter a new task')
 
